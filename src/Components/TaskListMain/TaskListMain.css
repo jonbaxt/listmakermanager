@@ -1,0 +1,52 @@
+.mainArea {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+.border {
+    border: solid 1px black;
+}
+.headerArea{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    background: lightcyan;
+}
+.newTaskEntry{
+    width: 100%;
+    height: 50px;
+    background: lightskyblue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.taskArea{
+    width: 100%;
+    height: 600px;
+}
+
+.inputBoxResize {
+    /* width: 1100px; */
+    width: 85%;
+    height: 20px;
+    font-size: 18px;
+}
+
+.footArea {
+    width: 100%;
+    height: 58px;
+    background: lightskyblue;
+}
+.h1Size {
+    font-size: 20px;
+}
+
+.marginLeftIndent {
+    margin-left: 25px;
+}
+.marginLeftIndentLess {
+    margin-left: 5px;
+}

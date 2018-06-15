@@ -1,0 +1,14 @@
+.taskListMainAreaForList {
+    width: 100%;
+    height: 90%;
+}
+
+.taskListBodyForList {
+    margin: 0 auto;
+    margin-top: 25px;
+    width: 96%;
+    height: 90%;
+    overflow: auto;
+    background: lightseagreen;
+}
+
