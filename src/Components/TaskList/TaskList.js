@@ -12,7 +12,7 @@ export default class TaskList extends React.Component {
             goThroughTasks = this.props.giveTaskList.filter(task => task.completed === true ).map(task => { return (<Task giveTask={task} key={task.taskid}  match={this.props.props} />) })
         }
         return (
-            <div className='taskListMainAreaForList border'>
+            <div className='taskListMainAreaForList'>
                 {/* <h2>Task List Show</h2> */}
                 <div className='taskListBodyForList border'>
                     {goThroughTasks}

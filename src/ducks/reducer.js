@@ -8,6 +8,7 @@ const initialState = {
 const FULFILLED = '_FULFILLED';
 const GET_USER_AXIOS = 'GET_USER_AXIOS';
 const GET_USER_TASKS = 'GET_USER_TASKS';
+const SEARCH_USER_TASKS = 'SEARCH_USER_TASKS';
 const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
 const MARK_TASK_COMPLETE = 'MARK_TASK_COMPLETE';
 const DELETE_TASK_BY_ID = 'DELETE_TASK_BY_ID';
@@ -28,6 +29,17 @@ export function getUserTasks(tasks) {
         payload: tasks
     }
 }
+export function searchUserTasks(searchQuery, userId) {
+    console.log('user Search', searchQuery)
+    console.log('userId ', userId)
+    let newTasks = axios.get(`/api/${userId}/gettasklistitems/search?type=${searchQuery}`).then(theTable => {
+        return theTable.data
+    }).catch(comeBackErr => { console.log(comeBackErr) })
+    return {
+        type: SEARCH_USER_TASKS,
+        payload: newTasks
+    }
+}
 export function createNewTask(newTask) {
     let tableComeBack = axios.post('/api/createnewtask', newTask).then(updatedTable => { return updatedTable.data }).catch(err => console.log(err))
     return {
@@ -36,17 +48,17 @@ export function createNewTask(newTask) {
     }
 }
 export function markTaskComplete(taskid, userid) {
-let updatedTable = axios.put(`/api/markcompleted/${taskid}/${userid}`)
-.then(updatedTable => { return updatedTable.data }).catch(err => console.log(err))
-// console.log(updatedTable)
+    let updatedTable = axios.put(`/api/markcompleted/${taskid}/${userid}`)
+        .then(updatedTable => { return updatedTable.data }).catch(err => console.log(err))
+    // console.log(updatedTable)
     return {
         type: MARK_TASK_COMPLETE,
         payload: updatedTable
     }
 }
 
-export function deleteTaskById(taskId){
-    let formattedTable = axios.delete(`/api/deletetask/${taskId}`).then( updatedTable => updatedTable.data).catch(err => console.log(err))
+export function deleteTaskById(taskId) {
+    let formattedTable = axios.delete(`/api/deletetask/${taskId}`).then(updatedTable => updatedTable.data).catch(err => console.log(err))
 
     return {
         type: DELETE_TASK_BY_ID,
@@ -58,14 +70,16 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_AXIOS + FULFILLED:
             return Object.assign({}, state, { user: action.payload })
-        case GET_USER_TASKS: 
+        case GET_USER_TASKS:
+            return Object.assign({}, state, { usersTasks: action.payload })
+        case SEARCH_USER_TASKS + FULFILLED:
             return Object.assign({}, state, { usersTasks: action.payload })
         case CREATE_NEW_TASK + FULFILLED:
             return Object.assign({}, state, { usersTasks: action.payload })
         case MARK_TASK_COMPLETE + FULFILLED:
             return Object.assign({}, state, { usersTasks: action.payload })
         case DELETE_TASK_BY_ID + FULFILLED:
-            return Object.assign({} , state, { usersTasks: action.payload })
+            return Object.assign({}, state, { usersTasks: action.payload })
         default:
             return state;
     }

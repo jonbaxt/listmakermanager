@@ -10,14 +10,15 @@ const app = express();
 
 massive(CONNECTION_STRING).then( mySQLDatabase => {
     console.log(chalk.bgYellow.black('Connected to SQL Database'))
-    mySQLDatabase.seedfile().then(el => console.log(chalk.bgGreen.yellow('Seed Successful'))).catch( err=> console.log(chalk.bgRed.yellow('Seed Failed')))
-    app.set('db', mySQLDatabase)
-})
+    // mySQLDatabase.seedfile().then(el => console.log(chalk.bgGreen.yellow('Seed Successful'))).catch( err=> console.log(chalk.bgRed.yellow('Seed Failed')))
+    app.set('db', mySQLDatabase);
+}).catch( err => console.log(chalk.bgRed.white('Failed to connect to massive', err)))
 app.use(express.static(`${__dirname}/../build`));
 app.use(bodyParser.json());
 
 app.get('/api/gettasklistuser/:id', con.getUserById);
 app.get('/api/gettasklists/:id', con.getTasksListsById);
+app.get('/api/:id/gettasklistitems/search', con.getTaskByIdSearchTask)
 app.post('/api/createnewtask', con.createNewTask);
 app.put('/api/markcompleted/:taskid/:id', con.markTaskComplete);
 app.delete('/api/deletetask/:id', con.deleteTaskById)

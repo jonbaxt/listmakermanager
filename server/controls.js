@@ -17,6 +17,16 @@ module.exports = {
             res.status(200).send(tableRetrieve)
         }).catch( recErr => { console.log(chalk.bgRed.black('Error while getting the table', recErr))})
     },
+    getTaskByIdSearchTask: (req, res) => {
+        const dbInstance = req.app.get('db');
+        let id = req.params.id;
+        let search = req.query.type;
+        console.log(chalk.bgGreen.white('Search result: ', search))
+        dbInstance.search_task_by_search([String(search), Number(id)]).then( tableRetrieve => {
+            console.log(chalk.bgYellow.black(tableRetrieve[0]))
+            res.status(200).send(tableRetrieve)
+        }).catch( recErr => { console.log(chalk.bgRed.black('Error while getting the table', recErr))})
+    },
     createNewTask: (req, res) => {
         const dbInstance = req.app.get('db');
         const { task, userid } = req.body;
