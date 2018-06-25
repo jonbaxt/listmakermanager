@@ -9,6 +9,8 @@
     width: 96%;
     height: 90%;
     overflow: auto;
-    background: lightseagreen;
+    /* background: lightseagreen; */
+    /* background: lightcyan; */
+    background: lightblue;
 }
 

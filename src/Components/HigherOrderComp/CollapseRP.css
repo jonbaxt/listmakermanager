@@ -1,0 +1,8 @@
+.pColor {
+    color: black;
+}
+
+.pColor:hover {
+    color: white;
+    transition: 0.5s all ease;
+}

@@ -1,23 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Shrikhand|Ubuntu');
 .App {
   /* text-align: center; */
   margin: 0px;
   padding: 0px;
+  font-family: 'Ubuntu', sans-serif;
 }
 h1{
   padding: 0px;
   margin: 0px;
+  color: lightcoral;
+  text-shadow: 1px 1px gray;
+  font-family: 'Shrikhand', cursive;
 }
 h2{
   padding: 0px;
   margin: 0px;
+  text-shadow: 1px 1px gray;
+  
 }
 h3{
   padding: 0px;
   margin: 0px;
+  text-shadow: 1px 1px gray;
 }
 h4{
   padding: 0px;
   margin: 0px;
+  text-shadow: 1px 1px gray;
+  color: white;
 }
 h5{
   padding: 0px;
@@ -35,6 +45,23 @@ div{
   padding: 0px;
   margin: 0px;
 }
+
+button {
+  border: none;
+  background: blue;
+  box-shadow: 1px 1px 2px lightseagreen;
+  color: white;
+}
+input {
+  background: lightseagreen;
+  border: none;
+  color: white;
+}
+/* input:-webkit-input-placeholder
+{
+  color: white;
+} */
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
